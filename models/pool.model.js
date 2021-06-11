@@ -21,6 +21,7 @@ let Schema = new mongoose.Schema({
   },
   depositedCal: Number,
   maxCap: Number,
+  minBet: Number,
   poolFee: Number,
   endDate: Number,
   createdDate: Number,
@@ -30,10 +31,12 @@ let Schema = new mongoose.Schema({
   whitelist: [String],
   bets: [
     {
+      _id: String,
       bettor: String,
       side: Number,
       amount: Number,
       createdDate: Number,
+      txId: String,
     },
   ],
   total: Number,

@@ -51,6 +51,11 @@ module.exports = [
         name: "_whitelist",
         type: "address[]",
       },
+      {
+        internalType: "uint256",
+        name: "_minBet",
+        type: "uint256",
+      },
     ],
     stateMutability: "nonpayable",
     type: "constructor",
@@ -94,13 +99,18 @@ module.exports = [
         name: "_side",
         type: "uint8",
       },
+      {
+        internalType: "string",
+        name: "_id",
+        type: "string",
+      },
     ],
     name: "betWithEth",
     outputs: [
       {
-        internalType: "bytes32",
+        internalType: "string",
         name: "",
-        type: "bytes32",
+        type: "string",
       },
     ],
     stateMutability: "payable",
@@ -118,13 +128,18 @@ module.exports = [
         name: "_amount",
         type: "uint256",
       },
+      {
+        internalType: "string",
+        name: "_id",
+        type: "string",
+      },
     ],
     name: "betWithToken",
     outputs: [
       {
-        internalType: "bytes32",
+        internalType: "string",
         name: "",
-        type: "bytes32",
+        type: "string",
       },
     ],
     stateMutability: "nonpayable",
@@ -288,13 +303,18 @@ module.exports = [
   {
     inputs: [
       {
-        internalType: "bytes32",
+        internalType: "string",
         name: "_betId",
-        type: "bytes32",
+        type: "string",
       },
     ],
     name: "getBet",
     outputs: [
+      {
+        internalType: "string",
+        name: "betId",
+        type: "string",
+      },
       {
         internalType: "address",
         name: "_bettor",
@@ -343,9 +363,9 @@ module.exports = [
     name: "getBetIdsOf",
     outputs: [
       {
-        internalType: "bytes32[]",
+        internalType: "string[]",
         name: "_betIds",
-        type: "bytes32[]",
+        type: "string[]",
       },
     ],
     stateMutability: "view",
@@ -463,6 +483,11 @@ module.exports = [
         name: "_claimedDepositAndFee",
         type: "bool",
       },
+      {
+        internalType: "uint256",
+        name: "_minBet",
+        type: "uint256",
+      },
     ],
     stateMutability: "view",
     type: "function",
@@ -520,6 +545,19 @@ module.exports = [
   {
     inputs: [],
     name: "maxCap",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "minBet",
     outputs: [
       {
         internalType: "uint256",

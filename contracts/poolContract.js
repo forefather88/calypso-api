@@ -2,6 +2,7 @@ require("dotenv").config();
 const Web3 = require("web3");
 const Tx = require("ethereumjs-tx");
 const { getPoolContract, getPoolManger } = require("./getContracts");
+const { map } = require("./const/PoolManagerAbi");
 const web3 = new Web3(new Web3.providers.HttpProvider(process.env.INFURA));
 const PoolManager = getPoolManger(web3, process.env.POOL_MANAGER);
 
@@ -45,6 +46,7 @@ exports.getPool = async (poolAddress, userAddress, version = 0) => {
     claimed: details._claimed,
     reward: details._reward / 1e18,
     bets: details.bets,
+    minBet: details.minBet,
   };
 };
 
@@ -55,11 +57,13 @@ const getBets = async (poolSc, userAddress) => {
   } catch (err) {
     console.log(err);
   }
+
   const bets = await Promise.all(
     betIds.map((el) => poolSc.methods.getBet(el).call())
   );
 
   const mapBets = bets.map((el) => ({
+    _id: el.betId,
     bettor: el._bettor,
     side: el._side,
     amount: el._amount / 1e18,

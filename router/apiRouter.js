@@ -8,5 +8,6 @@ router.post("/create-pool", matchController.createPool);
 router.get("/pool", matchController.getPool);
 router.get("/pools", matchController.getPools);
 router.get("/bets", matchController.getBets);
+router.post("/bettxid", matchController.createBetTxId);
 
 module.exports = router;

@@ -1,5 +1,6 @@
 const MatchModel = require("../models/game.model");
 const PoolModel = require("../models/pool.model");
+const BetTxIdModel = require("../models/bettxid.model");
 const Const = require("../const");
 const { updatePool, getBets } = require("../services/pool.service");
 
@@ -19,6 +20,21 @@ exports.getMatch = async (req, res) => {
   const { matchId } = req.query;
   const match = await MatchModel.findOne({ _id: matchId });
   res.json({ match });
+};
+
+exports.createBetTxId = async (req, res) => {
+  BetTxIdModel.insertMany([req.body])
+    .then((doc) => {
+      res.status(200).json({
+        message: "Success",
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(406).json({
+        message: "Something wrong",
+      });
+    });
 };
 
 exports.getPools = async (req, res) => {
