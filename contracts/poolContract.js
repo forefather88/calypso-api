@@ -9,6 +9,7 @@ const PoolManager = getPoolManger(web3, process.env.POOL_MANAGER);
 exports.getPool = async (poolAddress, userAddress, version = 0) => {
   const poolSc = getPoolContract(web3, poolAddress, version);
   const detail1 = poolSc.methods.getPoolDetail().call();
+
   const detail2 = poolSc.methods.getPoolDetail2().call();
   const info = poolSc.methods.getUserInfo().call({ from: userAddress });
   const bets = getBets(poolSc, userAddress);

@@ -38,7 +38,6 @@ exports.createBetTxId = async (req, res) => {
 };
 
 exports.getPools = async (req, res) => {
-  console.log(req.ip);
   const pools = await PoolModel.find({});
   res.json({ pools });
 };
@@ -55,7 +54,6 @@ exports.createPool = (req, res) => {
     createdDate: Math.round(Date.now() / 1e3),
     version: process.env.VERSION,
   };
-  console.log(pool);
   PoolModel.insertMany([pool])
     .then((doc) => {
       res.status(200).json({
@@ -68,6 +66,26 @@ exports.createPool = (req, res) => {
         message: "Something wrong",
       });
     });
+};
+
+exports.affiliateAddrCheck = async (req, res) => {
+  const { addresses } = req.body;
+  let validAddrs = [];
+  PoolModel.find({}).then((doc) => {
+    addresses.forEach((address) => {
+      console.log(address);
+      address = address.toLowerCase();
+      let isValid = !doc.some(
+        (el) =>
+          el.owner.toLowerCase() == address ||
+          el.betUsers.some((bu) => bu.toLowerCase() == address)
+      );
+      if (isValid) {
+        validAddrs.push(address);
+      }
+    });
+    res.json({ validAddrs });
+  });
 };
 
 exports.getPool = async (req, res) => {
