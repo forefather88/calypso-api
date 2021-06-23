@@ -1,8 +1,8 @@
-const MatchModel = require("../models/game.model");
-const { getMatches } = require("../network/apiSport");
+const MatchModel = require('../models/game.model');
+const { getMatches } = require('../network/apiSport');
 
 const getFootball = () => {
-  getMatches(2020, 39)
+  getMatches(2020, 40)
     .then((matches) => {
       matches &&
         matches.length &&
