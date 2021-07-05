@@ -6,9 +6,13 @@ module.exports = () => {
     .then((matches) => {
       if (matches && matches.length)
         matches.forEach((match) =>
-          MatchModel.updateOne({ gameId: match.gameId }, match, {
-            upsert: true,
-          })
+          MatchModel.updateOne(
+            { gameId: match.gameId, type: "esport" },
+            match,
+            {
+              upsert: true,
+            }
+          )
             .then(console.log)
             .catch(console.error)
         );
