@@ -24,6 +24,7 @@ let Schema = new mongoose.Schema({
   minBet: Number,
   poolFee: Number,
   endDate: Number,
+  handicap: { result: Number, value: Number },
   createdDate: Number,
   resultDate: Number,
   currency: String,

@@ -37,14 +37,9 @@ module.exports = [
         type: "address",
       },
       {
-        internalType: "uint256",
-        name: "_poolFee",
-        type: "uint256",
-      },
-      {
-        internalType: "uint256",
-        name: "_depositedCal",
-        type: "uint256",
+        internalType: "uint256[]",
+        name: "_currencyDetails",
+        type: "uint256[]",
       },
       {
         internalType: "address[]",
@@ -52,9 +47,9 @@ module.exports = [
         type: "address[]",
       },
       {
-        internalType: "uint256",
-        name: "_minBet",
-        type: "uint256",
+        internalType: "uint8[]",
+        name: "_handicap",
+        type: "uint8[]",
       },
     ],
     stateMutability: "nonpayable",
@@ -154,6 +149,19 @@ module.exports = [
       },
     ],
     name: "changeEndDate",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "_newAddress",
+        type: "address",
+      },
+    ],
+    name: "changeOracle",
     outputs: [],
     stateMutability: "nonpayable",
     type: "function",
@@ -263,38 +271,22 @@ module.exports = [
   },
   {
     inputs: [],
-    name: "endDate",
+    name: "game",
     outputs: [
       {
         internalType: "uint256",
-        name: "",
+        name: "gameId",
         type: "uint256",
       },
-    ],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [],
-    name: "gameId",
-    outputs: [
-      {
-        internalType: "uint256",
-        name: "",
-        type: "uint256",
-      },
-    ],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [],
-    name: "gameType",
-    outputs: [
       {
         internalType: "string",
-        name: "",
+        name: "gameType",
         type: "string",
+      },
+      {
+        internalType: "uint256",
+        name: "endDate",
+        type: "uint256",
       },
     ],
     stateMutability: "view",
@@ -386,19 +378,26 @@ module.exports = [
         type: "string",
       },
       {
-        internalType: "uint256",
-        name: "_gameId",
-        type: "uint256",
-      },
-      {
-        internalType: "string",
-        name: "_gameType",
-        type: "string",
-      },
-      {
-        internalType: "uint256",
-        name: "_endDate",
-        type: "uint256",
+        components: [
+          {
+            internalType: "uint256",
+            name: "gameId",
+            type: "uint256",
+          },
+          {
+            internalType: "string",
+            name: "gameType",
+            type: "string",
+          },
+          {
+            internalType: "uint256",
+            name: "endDate",
+            type: "uint256",
+          },
+        ],
+        internalType: "struct Game",
+        name: "_game",
+        type: "tuple",
       },
       {
         internalType: "address",
@@ -488,6 +487,23 @@ module.exports = [
         name: "_minBet",
         type: "uint256",
       },
+      {
+        components: [
+          {
+            internalType: "uint8",
+            name: "result",
+            type: "uint8",
+          },
+          {
+            internalType: "uint32",
+            name: "value",
+            type: "uint32",
+          },
+        ],
+        internalType: "struct Handicap",
+        name: "_handicap",
+        type: "tuple",
+      },
     ],
     stateMutability: "view",
     type: "function",
@@ -505,6 +521,24 @@ module.exports = [
         internalType: "bool",
         name: "_claimed",
         type: "bool",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "handicap",
+    outputs: [
+      {
+        internalType: "uint8",
+        name: "result",
+        type: "uint8",
+      },
+      {
+        internalType: "uint32",
+        name: "value",
+        type: "uint32",
       },
     ],
     stateMutability: "view",
@@ -563,6 +597,19 @@ module.exports = [
         internalType: "uint256",
         name: "",
         type: "uint256",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "oracle",
+    outputs: [
+      {
+        internalType: "contract Oracle",
+        name: "",
+        type: "address",
       },
     ],
     stateMutability: "view",

@@ -45,19 +45,19 @@ module.exports = [
         type: "address",
       },
       {
-        internalType: "uint256",
-        name: "_poolFee",
-        type: "uint256",
-      },
-      {
-        internalType: "uint256",
-        name: "_depositedCal",
-        type: "uint256",
+        internalType: "uint256[]",
+        name: "_currencyDetails",
+        type: "uint256[]",
       },
       {
         internalType: "address[]",
         name: "_whitelist",
         type: "address[]",
+      },
+      {
+        internalType: "uint8[]",
+        name: "_handicap",
+        type: "uint8[]",
       },
     ],
     name: "createBettingPool",
@@ -73,8 +73,10 @@ module.exports = [
   },
   {
     inputs: [],
+    name: "initialize",
+    outputs: [],
     stateMutability: "nonpayable",
-    type: "constructor",
+    type: "function",
   },
   {
     inputs: [],
@@ -136,19 +138,6 @@ module.exports = [
         internalType: "uint256",
         name: "",
         type: "uint256",
-      },
-    ],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [],
-    name: "getFeeReceiver",
-    outputs: [
-      {
-        internalType: "address",
-        name: "",
-        type: "address",
       },
     ],
     stateMutability: "view",

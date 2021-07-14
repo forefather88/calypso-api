@@ -20,17 +20,19 @@ exports.getPool = async (poolAddress, userAddress, version = 0) => {
     ...results[2],
     bets: results[3],
   };
+
+  console.log(details);
   return {
     _id: poolAddress,
     owner: details._owner,
     title: details._title,
     description: details._description,
-    gameId: details._gameId,
-    game: details._gameType,
+    gameId: details._game.gameId,
+    game: details._game.gameType,
     depositedCal: details._depositedCal / 1e18,
     maxCap: details._maxCap / 1e18,
     poolFee: details._poolFee / 100,
-    endDate: details._endDate,
+    endDate: details._game.endDate,
     createdDate: details._createdDate,
     currency: details._currency,
     isPrivate: details._isPrivate,
@@ -73,14 +75,14 @@ const getBets = async (poolSc, userAddress) => {
   return mapBets;
 };
 
-exports.updateResult = (poolAddress, result, version = 0) => {
+exports.updateResult = (poolAddress, result, winResult, version = 0) => {
   return new Promise((resolve, reject) => {
     const pub = process.env.PUB;
     const priv = process.env.PRIV;
     web3.eth.getTransactionCount(pub).then((nonce) => {
       var privateKeyHex = Buffer.from(priv, "hex");
       var poolSc = getPoolContract(web3, poolAddress, version);
-      var txData = poolSc.methods.setResult(result).encodeABI();
+      var txData = poolSc.methods.setResult(result, winResult).encodeABI();
       console.log(process.env.CHAIN_ID);
       var rawTx = {
         from: pub,
