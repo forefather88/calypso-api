@@ -713,6 +713,11 @@ module.exports = [
         name: "_sideWin",
         type: "uint8",
       },
+      {
+        internalType: "uint8",
+        name: "_winResult",
+        type: "uint8",
+      },
     ],
     name: "setResult",
     outputs: [

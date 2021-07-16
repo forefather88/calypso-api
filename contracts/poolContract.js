@@ -20,8 +20,6 @@ exports.getPool = async (poolAddress, userAddress, version = 0) => {
     ...results[2],
     bets: results[3],
   };
-
-  console.log(details);
   return {
     _id: poolAddress,
     owner: details._owner,
