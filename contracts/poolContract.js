@@ -48,6 +48,7 @@ exports.getPool = async (poolAddress, userAddress, version = 0) => {
     reward: details._reward / 1e18,
     bets: details.bets,
     minBet: details.minBet,
+    minPoolSize: details.minPoolSize,
   };
 };
 

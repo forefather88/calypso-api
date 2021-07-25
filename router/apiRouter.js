@@ -10,5 +10,8 @@ router.get("/pools", matchController.getPools);
 router.get("/bets", matchController.getBets);
 router.post("/bettxid", matchController.createBetTxId);
 router.post("/affiliate-addr", matchController.affiliateAddrCheck);
+router.post("/createUserName", matchController.createUserName);
+router.get("/getUserName", matchController.getUserName);
+router.get("/getUserAddress", matchController.getUserAddress);
 
 module.exports = router;

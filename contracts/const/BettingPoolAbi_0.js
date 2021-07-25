@@ -429,6 +429,11 @@ module.exports = [
         name: "_isPrivate",
         type: "bool",
       },
+      {
+        internalType: "uint256",
+        name: "_minPoolSize",
+        type: "uint256",
+      },
     ],
     stateMutability: "view",
     type: "function",
@@ -592,6 +597,19 @@ module.exports = [
   {
     inputs: [],
     name: "minBet",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "minPoolSize",
     outputs: [
       {
         internalType: "uint256",

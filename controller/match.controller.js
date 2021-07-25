@@ -1,6 +1,7 @@
 const MatchModel = require("../models/game.model");
 const PoolModel = require("../models/pool.model");
 const BetTxIdModel = require("../models/bettxid.model");
+const UserNameModel = require("../models/userName.model");
 const Const = require("../const");
 const { updatePool, getBets } = require("../services/pool.service");
 
@@ -105,4 +106,50 @@ exports.getPool = async (req, res) => {
         message: "Not found",
       });
     });
+};
+
+exports.createUserName = async (req, res) => {
+  const { _name, _address } = req.body;
+  const md = await UserNameModel.findOne({
+    $or: [{ name: _name }, { address: _address }],
+  });
+  if (md != null) {
+    if (md.name != _name) {
+      md.name = _name;
+      await md.save();
+    } else {
+      res.status(406).json({
+        message: "This name already exists!",
+      });
+    }
+  } else {
+    UserNameModel.insertMany([
+      { address: _address, name: _name, version: process.env.VERSION },
+    ])
+      .then((doc) => {
+        res.status(200).json({
+          message: "Success",
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+        res.status(406).json({
+          message: "Something wrong",
+        });
+      });
+  }
+};
+
+exports.getUserName = async (req, res) => {
+  const _address = req.query.address;
+  const model = await UserNameModel.findOne({ address: _address });
+  const userName = model == null ? "" : model.name;
+  res.json({ userName });
+};
+
+exports.getUserAddress = async (req, res) => {
+  const _name = req.query.name;
+  const model = await UserNameModel.findOne({ name: _name });
+  const userAddress = model.address;
+  res.json({ userAddress });
 };
