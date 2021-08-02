@@ -40,6 +40,7 @@ exports.getPool = async (poolAddress, userAddress, version = 0) => {
       side: details._result,
       winOutcome: details._winOutcome / 1e18,
       winTotal: (details._winTotal || 0) / 1e18,
+      refund: details._refund / 1e18,
       poolFeeAmount: details._poolFeeAmount / 1e18,
       claimedDepositAndFee: details._claimedDepositAndFee,
     },
@@ -74,14 +75,14 @@ const getBets = async (poolSc, userAddress) => {
   return mapBets;
 };
 
-exports.updateResult = (poolAddress, result, winResult, version = 0) => {
+exports.updateResult = (poolAddress, result, g1, g2, version = 0) => {
   return new Promise((resolve, reject) => {
     const pub = process.env.PUB;
     const priv = process.env.PRIV;
     web3.eth.getTransactionCount(pub).then((nonce) => {
       var privateKeyHex = Buffer.from(priv, "hex");
       var poolSc = getPoolContract(web3, poolAddress, version);
-      var txData = poolSc.methods.setResult(result, winResult).encodeABI();
+      var txData = poolSc.methods.setResult(result, g1, g2).encodeABI();
       console.log(process.env.CHAIN_ID);
       var rawTx = {
         from: pub,

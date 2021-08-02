@@ -1,13 +1,35 @@
 module.exports = [
   {
-    inputs: [
+    inputs: [],
+    name: "oracle",
+    outputs: [
       {
-        internalType: "address",
-        name: "_newAddress",
+        internalType: "contract Oracle",
+        name: "",
         type: "address",
       },
     ],
-    name: "changeOracle",
+    stateMutability: "view",
+    type: "function",
+    constant: true,
+  },
+  {
+    inputs: [],
+    name: "owner",
+    outputs: [
+      {
+        internalType: "address",
+        name: "",
+        type: "address",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+    constant: true,
+  },
+  {
+    inputs: [],
+    name: "initialize",
     outputs: [],
     stateMutability: "nonpayable",
     type: "function",
@@ -55,9 +77,14 @@ module.exports = [
         type: "address[]",
       },
       {
-        internalType: "uint8[]",
+        internalType: "bool",
+        name: "_hasHandicap",
+        type: "bool",
+      },
+      {
+        internalType: "int256[]",
         name: "_handicap",
-        type: "uint8[]",
+        type: "int256[]",
       },
     ],
     name: "createBettingPool",
@@ -69,90 +96,6 @@ module.exports = [
       },
     ],
     stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [],
-    name: "getAffiliateAddress",
-    outputs: [
-      {
-        internalType: "address",
-        name: "",
-        type: "address",
-      },
-    ],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [],
-    name: "getAffiliatePercent",
-    outputs: [
-      {
-        internalType: "uint256",
-        name: "",
-        type: "uint256",
-      },
-    ],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [],
-    name: "getAllPool",
-    outputs: [
-      {
-        internalType: "address[]",
-        name: "",
-        type: "address[]",
-      },
-    ],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [],
-    name: "getCalAddress",
-    outputs: [
-      {
-        internalType: "address",
-        name: "",
-        type: "address",
-      },
-    ],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [],
-    name: "getEthPrice",
-    outputs: [
-      {
-        internalType: "uint256",
-        name: "",
-        type: "uint256",
-      },
-    ],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "uint8",
-        name: "_poolType",
-        type: "uint8",
-      },
-    ],
-    name: "getLastOwnPool",
-    outputs: [
-      {
-        internalType: "address",
-        name: "",
-        type: "address",
-      },
-    ],
-    stateMutability: "view",
     type: "function",
   },
   {
@@ -178,19 +121,21 @@ module.exports = [
     ],
     stateMutability: "view",
     type: "function",
+    constant: true,
   },
   {
     inputs: [],
-    name: "getOperatorAddress",
+    name: "getAllPool",
     outputs: [
       {
-        internalType: "address",
+        internalType: "address[]",
         name: "",
-        type: "address",
+        type: "address[]",
       },
     ],
     stateMutability: "view",
     type: "function",
+    constant: true,
   },
   {
     inputs: [
@@ -210,19 +155,27 @@ module.exports = [
     ],
     stateMutability: "view",
     type: "function",
+    constant: true,
   },
   {
-    inputs: [],
-    name: "getPlatformFee",
+    inputs: [
+      {
+        internalType: "uint8",
+        name: "_poolType",
+        type: "uint8",
+      },
+    ],
+    name: "getLastOwnPool",
     outputs: [
       {
-        internalType: "uint256",
+        internalType: "address",
         name: "",
-        type: "uint256",
+        type: "address",
       },
     ],
     stateMutability: "view",
     type: "function",
+    constant: true,
   },
   {
     inputs: [
@@ -242,6 +195,21 @@ module.exports = [
     ],
     stateMutability: "view",
     type: "function",
+    constant: true,
+  },
+  {
+    inputs: [],
+    name: "getEthPrice",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+    constant: true,
   },
   {
     inputs: [
@@ -261,30 +229,11 @@ module.exports = [
     ],
     stateMutability: "view",
     type: "function",
+    constant: true,
   },
   {
     inputs: [],
-    name: "initialize",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [],
-    name: "oracle",
-    outputs: [
-      {
-        internalType: "contract Oracle",
-        name: "",
-        type: "address",
-      },
-    ],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [],
-    name: "owner",
+    name: "getCalAddress",
     outputs: [
       {
         internalType: "address",
@@ -293,6 +242,76 @@ module.exports = [
       },
     ],
     stateMutability: "view",
+    type: "function",
+    constant: true,
+  },
+  {
+    inputs: [],
+    name: "getOperatorAddress",
+    outputs: [
+      {
+        internalType: "address",
+        name: "",
+        type: "address",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+    constant: true,
+  },
+  {
+    inputs: [],
+    name: "getPlatformFee",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+    constant: true,
+  },
+  {
+    inputs: [],
+    name: "getAffiliateAddress",
+    outputs: [
+      {
+        internalType: "address",
+        name: "",
+        type: "address",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+    constant: true,
+  },
+  {
+    inputs: [],
+    name: "getAffiliatePercent",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+    constant: true,
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "_newAddress",
+        type: "address",
+      },
+    ],
+    name: "changeOracle",
+    outputs: [],
+    stateMutability: "nonpayable",
     type: "function",
   },
 ];

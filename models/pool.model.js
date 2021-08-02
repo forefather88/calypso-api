@@ -25,7 +25,8 @@ let Schema = new mongoose.Schema({
   minPoolSize: Number,
   poolFee: Number,
   endDate: Number,
-  handicap: { result: Number, value: Number },
+  hasHandicap: Boolean,
+  handicap: Number,
   createdDate: Number,
   resultDate: Number,
   currency: String,
@@ -58,6 +59,7 @@ let Schema = new mongoose.Schema({
     updated: Boolean,
     winOutcome: Number,
     winTotal: Number,
+    refund: Number,
     poolFeeAmount: Number,
     claimedDepositAndFee: Boolean,
     affiliates: [

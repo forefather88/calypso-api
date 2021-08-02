@@ -66,12 +66,11 @@ const getGameResult = (game) => {
 
 const updateToContract = async (pool) => {
   console.log("updateToContract", pool._id, pool.result.side);
-  const winResult =
-    pool.result.g1 >= pool.result.g2 ? pool.result.g1 : pool.result.g2;
   await poolContract.updateResult(
     pool._id,
     pool.result.side,
-    winResult,
+    pool.result.g1,
+    pool.result.g2,
     pool.version
   );
   pool.result = { ...pool.result, updated: true };

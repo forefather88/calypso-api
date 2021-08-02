@@ -47,9 +47,14 @@ module.exports = [
         type: "address[]",
       },
       {
-        internalType: "uint8[]",
+        internalType: "bool",
+        name: "_hasHandicap",
+        type: "bool",
+      },
+      {
+        internalType: "int256[]",
         name: "_handicap",
-        type: "uint8[]",
+        type: "int256[]",
       },
     ],
     stateMutability: "nonpayable",
@@ -434,6 +439,11 @@ module.exports = [
         name: "_minPoolSize",
         type: "uint256",
       },
+      {
+        internalType: "bool",
+        name: "_hasHandicap",
+        type: "bool",
+      },
     ],
     stateMutability: "view",
     type: "function",
@@ -460,6 +470,11 @@ module.exports = [
       {
         internalType: "uint256",
         name: "_winTotal",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "_refund",
         type: "uint256",
       },
       {
@@ -495,14 +510,14 @@ module.exports = [
       {
         components: [
           {
-            internalType: "uint8",
-            name: "result",
-            type: "uint8",
+            internalType: "int256",
+            name: "whole",
+            type: "int256",
           },
           {
-            internalType: "uint32",
-            name: "value",
-            type: "uint32",
+            internalType: "int256",
+            name: "fractional",
+            type: "int256",
           },
         ],
         internalType: "struct Handicap",
@@ -536,14 +551,27 @@ module.exports = [
     name: "handicap",
     outputs: [
       {
-        internalType: "uint8",
-        name: "result",
-        type: "uint8",
+        internalType: "int256",
+        name: "whole",
+        type: "int256",
       },
       {
-        internalType: "uint32",
-        name: "value",
-        type: "uint32",
+        internalType: "int256",
+        name: "fractional",
+        type: "int256",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "hasHandicap",
+    outputs: [
+      {
+        internalType: "bool",
+        name: "",
+        type: "bool",
       },
     ],
     stateMutability: "view",
@@ -732,9 +760,14 @@ module.exports = [
         type: "uint8",
       },
       {
-        internalType: "uint8",
-        name: "_winResult",
-        type: "uint8",
+        internalType: "int256",
+        name: "_aResult",
+        type: "int256",
+      },
+      {
+        internalType: "int256",
+        name: "_bResult",
+        type: "int256",
       },
     ],
     name: "setResult",
