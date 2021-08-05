@@ -41,6 +41,7 @@ exports.createBetTxId = async (req, res) => {
 exports.getPools = async (req, res) => {
   const pools = await PoolModel.find({});
   res.json({ pools });
+  console.log("TESTING DEPLOY!!!!!");
 };
 
 exports.getBets = async (req, res) => {
