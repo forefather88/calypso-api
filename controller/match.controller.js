@@ -1,9 +1,11 @@
 const MatchModel = require("../models/game.model");
 const PoolModel = require("../models/pool.model");
+const LotteryModel = require("../models/lottery.model");
 const BetTxIdModel = require("../models/bettxid.model");
 const UserNameModel = require("../models/userName.model");
 const Const = require("../const");
 const { updatePool, getBets } = require("../services/pool.service");
+const { updateLottery } = require("../services/lottery.service");
 
 exports.getMatches = async (req, res) => {
   const currentTime = new Date().getTime() / 1000 + 60 * 60;
@@ -41,7 +43,11 @@ exports.createBetTxId = async (req, res) => {
 exports.getPools = async (req, res) => {
   const pools = await PoolModel.find({});
   res.json({ pools });
-  console.log("TESTING DEPLOY!!!!!");
+};
+
+exports.getLotteries = async (req, res) => {
+  const lotteries = await LotteryModel.find({});
+  res.json({ lotteries });
 };
 
 exports.getBets = async (req, res) => {
@@ -107,6 +113,13 @@ exports.getPool = async (req, res) => {
         message: "Not found",
       });
     });
+};
+
+exports.getLottery = async (req, res) => {
+  const { lotteryAddress } = req.query;
+  await updateLottery(lotteryAddress);
+  const lottery = await LotteryModel.findOne({ _id: lotteryAddress });
+  res.json({ lottery });
 };
 
 exports.createUserName = async (req, res) => {

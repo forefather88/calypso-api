@@ -9,8 +9,10 @@ const cron = require("node-cron");
 const updateResult = require("./tasks/updateResult");
 const fetchEsport = require("./tasks/getEsport");
 const syncPools = require("./tasks/syncPools");
+const syncLotteries = require("./tasks/syncLotteries");
 const updatePoolGameInfo = require("./tasks/updatePoolGameInfo");
 const getFootball = require("./tasks/getFootball");
+const getNba = require("./tasks/getNba");
 
 require("dotenv").config();
 require("mongoose").connect(process.env.MONGODB, {
@@ -34,11 +36,16 @@ if (process.env.ENV === "PROD") {
 
   // Every 4 hours
   cron.schedule("0 0 */4 * * *", () => {
+    getNba();
+  });
+
+  // Every 4 hours
+  cron.schedule("0 0 */4 * * *", () => {
     fetchEsport();
   });
 
   // Once a day
-  cron.schedule("0 0 1 * * *", () => {
+  cron.schedule("0 0 */4 * * *", () => {
     getFootball();
   });
 
@@ -50,6 +57,11 @@ if (process.env.ENV === "PROD") {
   //Every 2 hours
   cron.schedule("0 0 */2 * * *", () => {
     syncPools();
+  });
+
+  //Every minute
+  cron.schedule("0 */1 * * * *", () => {
+    syncLotteries();
   });
 }
 

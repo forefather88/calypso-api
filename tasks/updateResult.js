@@ -58,6 +58,13 @@ const getGameResult = (game) => {
           resolve(res);
         })
         .catch((err) => reject(err));
+    } else if (game.type === SportType.nba) {
+      pandas
+        .getResult(game.gameId)
+        .then((res) => {
+          resolve(res);
+        })
+        .catch((err) => reject(err));
     } else {
       reject();
     }

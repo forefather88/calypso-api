@@ -13,5 +13,7 @@ router.post("/affiliate-addr", matchController.affiliateAddrCheck);
 router.post("/createUserName", matchController.createUserName);
 router.get("/getUserName", matchController.getUserName);
 router.get("/getUserAddress", matchController.getUserAddress);
+router.get("/lotteries", matchController.getLotteries);
+router.get("/lottery", matchController.getLottery);
 
 module.exports = router;
