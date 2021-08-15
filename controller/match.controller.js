@@ -9,9 +9,9 @@ const { updateLottery } = require("../services/lottery.service");
 
 exports.getMatches = async (req, res) => {
   const currentTime = new Date().getTime() / 1000 + 60 * 60;
-  const afterMonth = currentTime + 60 * 60 * 24 * 30;
+  const after2Weeks = currentTime + 60 * 60 * 24 * 14;
   const matches = await MatchModel.find({
-    date: { $gt: currentTime, $lt: afterMonth },
+    date: { $gt: currentTime, $lt: after2Weeks },
   }).sort({ date: 1 });
   res.json({
     matches,
