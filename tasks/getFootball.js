@@ -2,7 +2,14 @@ const MatchModel = require("../models/game.model");
 const { getMatches } = require("../network/apiSport");
 
 const getFootball = () => {
-  getMatches(2020, 40)
+  getMatchesByLeague(40);
+  getMatchesByLeague(140);
+  getMatchesByLeague(78);
+  getMatchesByLeague(135);
+};
+
+const getMatchesByLeague = (league) => {
+  getMatches(2020, league)
     .then((matches) => {
       matches &&
         matches.length &&
@@ -20,4 +27,5 @@ const getFootball = () => {
     })
     .catch(console.error);
 };
+
 module.exports = getFootball;

@@ -3,6 +3,9 @@ exports.GameType = {
   lol: { type: "lol", name: "League of Legends" },
   dota: { type: "dota 2", name: "Dota 2" },
   nba: { type: "nba", name: "NBA" },
+  laliga: { type: "laliga", name: "La Liga" },
+  bundesliga: { type: "bundesliga", name: "Bundesliga" },
+  italiaseriea: { type: "italiaseriea", name: "Italia Serie A" },
 };
 
 exports.SportType = {
@@ -10,7 +13,6 @@ exports.SportType = {
   esport: "esport",
   nba: "nba",
 };
-
 exports.GameStatus = {
   notStarted: "NS",
 };

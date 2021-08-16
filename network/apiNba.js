@@ -15,11 +15,7 @@ const apiNba = {
 exports.getMatches = (year) => {
   return new Promise((resolve, reject) => {
     network
-      .get(
-        apiNba.getFixturesUrl + "games/seasonYear/" + year,
-        {},
-        apiNba.headers
-      )
+      .get(apiNba.getFixturesUrl + year, {}, apiNba.headers)
       .then((res) => {
         const response = res.data;
         const matches = response.api.games.map((item) => {

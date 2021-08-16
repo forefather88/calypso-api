@@ -11,6 +11,23 @@ const apiSport = {
 };
 
 exports.getMatches = (season, league) => {
+  let gameType;
+  switch (league) {
+    case 40:
+      gameType = "epl";
+      break;
+    case 140:
+      gameType = "laliga";
+      break;
+    case 78:
+      gameType = "bundesliga";
+      break;
+    case 135:
+      gameType = "italiaseriea";
+      break;
+    default:
+      break;
+  }
   return new Promise((resolve, reject) => {
     network
       .get(
@@ -35,7 +52,7 @@ exports.getMatches = (season, league) => {
             status: item.fixture.status.short,
             date: item.fixture.timestamp,
             type: SportType.football,
-            game: "epl",
+            game: gameType,
             gameLogo: "https://media.api-sports.io/football/leagues/39.png",
             link: "https://www.premierleague.com/fixtures",
           };
