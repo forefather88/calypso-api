@@ -31,6 +31,7 @@ let Schema = new mongoose.Schema({
   resultDate: Number,
   currency: String,
   isPrivate: Boolean,
+  isUnlimited: Boolean,
   whitelist: [String],
   bets: [
     {

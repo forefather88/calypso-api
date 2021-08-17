@@ -2,12 +2,70 @@ module.exports = [
   {
     inputs: [
       {
-        internalType: "uint256",
-        name: "_totalPrize",
-        type: "uint256",
+        internalType: "address",
+        name: "_newAddress",
+        type: "address",
       },
     ],
-    name: "createLottery",
+    name: "changeOracle",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "string",
+        name: "_title",
+        type: "string",
+      },
+      {
+        internalType: "string",
+        name: "_description",
+        type: "string",
+      },
+      {
+        internalType: "uint256",
+        name: "_gameId",
+        type: "uint256",
+      },
+      {
+        internalType: "string",
+        name: "_gameType",
+        type: "string",
+      },
+      {
+        internalType: "uint256",
+        name: "_endDate",
+        type: "uint256",
+      },
+      {
+        internalType: "address",
+        name: "_currency",
+        type: "address",
+      },
+      {
+        internalType: "uint256[]",
+        name: "_currencyDetails",
+        type: "uint256[]",
+      },
+      {
+        internalType: "address[]",
+        name: "_whitelist",
+        type: "address[]",
+      },
+      {
+        internalType: "bool[]",
+        name: "_bools",
+        type: "bool[]",
+      },
+      {
+        internalType: "int256[]",
+        name: "_handicap",
+        type: "int256[]",
+      },
+    ],
+    name: "createBettingPool",
     outputs: [
       {
         internalType: "address",
@@ -20,7 +78,33 @@ module.exports = [
   },
   {
     inputs: [],
-    name: "getAllLotteries",
+    name: "getAffiliateAddress",
+    outputs: [
+      {
+        internalType: "address",
+        name: "",
+        type: "address",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "getAffiliatePercent",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "getAllPool",
     outputs: [
       {
         internalType: "address[]",
@@ -33,7 +117,146 @@ module.exports = [
   },
   {
     inputs: [],
-    name: "getLotteriesAmount",
+    name: "getCalAddress",
+    outputs: [
+      {
+        internalType: "address",
+        name: "",
+        type: "address",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "getEthPrice",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "uint8",
+        name: "_poolType",
+        type: "uint8",
+      },
+    ],
+    name: "getLastOwnPool",
+    outputs: [
+      {
+        internalType: "address",
+        name: "",
+        type: "address",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "_depositedCal",
+        type: "uint256",
+      },
+      {
+        internalType: "address",
+        name: "_currency",
+        type: "address",
+      },
+    ],
+    name: "getMaxCap",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "_maxCap",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "getOperatorAddress",
+    outputs: [
+      {
+        internalType: "address",
+        name: "",
+        type: "address",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "uint8",
+        name: "_poolType",
+        type: "uint8",
+      },
+    ],
+    name: "getOwnPools",
+    outputs: [
+      {
+        internalType: "address[]",
+        name: "",
+        type: "address[]",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "getPlatformFee",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "uint8",
+        name: "_poolType",
+        type: "uint8",
+      },
+    ],
+    name: "getPoolsWithType",
+    outputs: [
+      {
+        internalType: "address[]",
+        name: "",
+        type: "address[]",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "_tokenAddress",
+        type: "address",
+      },
+    ],
+    name: "getTokenPrice",
     outputs: [
       {
         internalType: "uint256",
@@ -46,30 +269,6 @@ module.exports = [
   },
   {
     inputs: [],
-    name: "getRandomNumber",
-    outputs: [
-      {
-        internalType: "bytes32",
-        name: "requestId",
-        type: "bytes32",
-      },
-    ],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
-        name: "_vrfCoordinator",
-        type: "address",
-      },
-      {
-        internalType: "address",
-        name: "_link",
-        type: "address",
-      },
-    ],
     name: "initialize",
     outputs: [],
     stateMutability: "nonpayable",
@@ -77,17 +276,10 @@ module.exports = [
   },
   {
     inputs: [],
-    name: "initialize",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [],
-    name: "linkAddress",
+    name: "oracle",
     outputs: [
       {
-        internalType: "address",
+        internalType: "contract Oracle",
         name: "",
         type: "address",
       },
@@ -106,37 +298,6 @@ module.exports = [
       },
     ],
     stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "bytes32",
-        name: "requestId",
-        type: "bytes32",
-      },
-      {
-        internalType: "uint256",
-        name: "randomness",
-        type: "uint256",
-      },
-    ],
-    name: "rawFulfillRandomness",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [],
-    name: "withdrawLink",
-    outputs: [
-      {
-        internalType: "bool",
-        name: "",
-        type: "bool",
-      },
-    ],
-    stateMutability: "nonpayable",
     type: "function",
   },
 ];

@@ -49,6 +49,7 @@ exports.getPool = async (poolAddress, userAddress, version = 0) => {
     bets: details.bets,
     minBet: details.minBet,
     minPoolSize: details.minPoolSize,
+    isUnlimited: details._isUnlimited,
   };
 };
 

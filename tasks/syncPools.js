@@ -47,6 +47,7 @@ const syncPool = async (addr) => {
     total: poolDetail.total,
     result: poolDetail.result,
     betUsers: poolDetail.betUsers,
+    isUnlimited: poolDetail.isUnlimited,
   };
   await PoolModel.insertMany([pool]);
   console.log("Done insert", addr);
