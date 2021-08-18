@@ -15,5 +15,6 @@ router.get("/getUserName", matchController.getUserName);
 router.get("/getUserAddress", matchController.getUserAddress);
 router.get("/lotteries", matchController.getLotteries);
 router.get("/lottery", matchController.getLottery);
+router.get("/tickets", matchController.getTickets);
 
 module.exports = router;

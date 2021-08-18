@@ -6,6 +6,7 @@ const UserNameModel = require("../models/userName.model");
 const Const = require("../const");
 const { updatePool, getBets } = require("../services/pool.service");
 const { updateLottery } = require("../services/lottery.service");
+const { getTickets } = require("../contracts/lotteryContract");
 
 exports.getMatches = async (req, res) => {
   const currentTime = new Date().getTime() / 1000 + 60 * 60;
@@ -54,6 +55,12 @@ exports.getBets = async (req, res) => {
   const { poolAddress, userAddress } = req.query;
   const bets = await getBets(poolAddress, userAddress);
   res.json({ bets });
+};
+
+exports.getTickets = async (req, res) => {
+  const { lotteryAddress, userAddress } = req.query;
+  const tickets = await getTickets(lotteryAddress, userAddress);
+  res.json({ tickets });
 };
 
 exports.createPool = (req, res) => {
