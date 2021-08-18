@@ -55,11 +55,9 @@ exports.getAllLotteries = () => {
 };
 
 exports.getTickets = async (lotteryAddress, userAddress) => {
-  console.log("333333333333333333333333");
   const lotterySc = getLotteryContract(web3, lotteryAddress);
   const _tickets = await lotterySc.methods
     .getTicketsOfPlayer()
     .call({ from: userAddress });
-  console.log(_tickets);
   return { tickets: _tickets };
 };

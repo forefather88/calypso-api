@@ -58,10 +58,8 @@ exports.getBets = async (req, res) => {
 };
 
 exports.getTickets = async (req, res) => {
-  console.log("111111111111111111111");
   const { lotteryAddress, userAddress } = req.query;
   const tickets = await getTickets(lotteryAddress, userAddress);
-  console.log("222222222222222222222222");
   res.json({ tickets });
 };
 

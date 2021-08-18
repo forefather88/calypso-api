@@ -68,6 +68,9 @@ if (process.env.ENV === "PROD") {
 app.use("/api", apiRouter);
 
 app.get("/*", function (req, res) {
+  console.log("---------------app.get(/*,----------------");
+  console.log(req);
+  console.log(res);
   res.sendFile(path.join(__dirname, "prod", "index.html"));
 });
 
