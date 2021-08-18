@@ -67,12 +67,9 @@ if (process.env.ENV === "PROD") {
 
 app.use("/api", apiRouter);
 
-app.get("/*", function (req, res) {
-  console.log("---------------app.get(/*,----------------");
-  console.log(req);
-  console.log(res);
+/*app.get("/*", function (req, res) {
   res.sendFile(path.join(__dirname, "prod", "index.html"));
-});
+});*/
 
 const port = "4000";
 
