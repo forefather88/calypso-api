@@ -13,9 +13,9 @@ module.exports = () => {
               upsert: true,
             }
           )
-            .then(console.log)
-            .catch(console.error)
+            .then(() => console.log)
+            .catch(() => console.error)
         );
     })
-    .catch(console.error);
+    .catch(() => console.error);
 };

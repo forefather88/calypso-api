@@ -9,7 +9,7 @@ const getFootball = () => {
 };
 
 const getMatchesByLeague = (league) => {
-  getMatches(2020, league)
+  getMatches(2021, league)
     .then((matches) => {
       matches &&
         matches.length &&
@@ -21,11 +21,11 @@ const getMatchesByLeague = (league) => {
               upsert: true,
             }
           )
-            .then(console.log)
-            .catch(console.error)
+            .then(() => console.log)
+            .catch(() => console.error)
         );
     })
-    .catch(console.error);
+    .catch(() => console.error);
 };
 
 module.exports = getFootball;

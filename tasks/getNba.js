@@ -2,7 +2,7 @@ const MatchModel = require("../models/game.model");
 const { getMatches } = require("../network/apiNba");
 
 const getNba = () => {
-  getMatches(2020)
+  getMatches(2021)
     .then((matches) => {
       matches &&
         matches.length &&
@@ -10,10 +10,10 @@ const getNba = () => {
           MatchModel.updateOne({ gameId: match.gameId, type: "nba" }, match, {
             upsert: true,
           })
-            .then(console.log)
-            .catch(console.error)
+            .then(() => console.log)
+            .catch(() => console.error)
         );
     })
-    .catch(console.error);
+    .catch(() => console.error);
 };
 module.exports = getNba;
