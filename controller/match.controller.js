@@ -137,7 +137,18 @@ exports.createUserName = async (req, res) => {
   if (md != null) {
     if (md.name != _name) {
       md.name = _name;
-      await md.save();
+      md.save()
+        .then((doc) => {
+          res.status(200).json({
+            message: "Success",
+          });
+        })
+        .catch((err) => {
+          console.log(err);
+          res.status(406).json({
+            message: "Something wrong",
+          });
+        });
     } else {
       res.status(406).json({
         message: "This name already exists!",
