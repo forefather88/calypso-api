@@ -22,5 +22,6 @@ exports.updateLottery = async (lotteryAddress) => {
   lottery.usersClaimedStake = lotteryDetail.usersClaimedStake;
   lottery.stakersAddresses = lotteryDetail.stakersAddresses;
   lottery.stakingAmounts = lotteryDetail.stakingAmounts;
+  lottery.winNumber = lotteryDetail.winNumber;
   await lottery.save();
 };

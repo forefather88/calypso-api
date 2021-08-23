@@ -10,6 +10,7 @@ const updateResult = require("./tasks/updateResult");
 const fetchEsport = require("./tasks/getEsport");
 const syncPools = require("./tasks/syncPools");
 const syncLotteries = require("./tasks/syncLotteries");
+const drawLotteries = require("./tasks/drawLotteries");
 const updatePoolGameInfo = require("./tasks/updatePoolGameInfo");
 const getFootball = require("./tasks/getFootball");
 const getNba = require("./tasks/getNba");
@@ -62,6 +63,12 @@ if (process.env.ENV === "PROD") {
   //Every minute
   cron.schedule("0 */1 * * * *", () => {
     syncLotteries();
+  });
+
+  //Should be every 30 mins after testing
+  cron.schedule("0 */30 * * * *", () => {
+    console.log("drawLotteries();");
+    drawLotteries();
   });
 }
 

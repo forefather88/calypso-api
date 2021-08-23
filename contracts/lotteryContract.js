@@ -1,6 +1,5 @@
 require("dotenv").config();
 const Web3 = require("web3");
-const Tx = require("ethereumjs-tx");
 const { getLotteryContract, getLotteryManager } = require("./getContracts");
 const web3 = new Web3(new Web3.providers.HttpProvider(process.env.INFURA));
 const LotteryManager = getLotteryManager(web3, process.env.LOTTERY_MANAGER);
@@ -15,6 +14,7 @@ exports.getLottery = async (lotteryAddress) => {
     ...promises[0],
     ...promises[1],
     ...promises[2],
+    ...promises[3],
   };
   return {
     _id: lotteryAddress,
@@ -39,6 +39,7 @@ exports.getLottery = async (lotteryAddress) => {
     usersClaimedStake: results._usersClaimedStake,
     stakersAddresses: results._stakersAddresses,
     stakingAmounts: results._stakingAmounts,
+    winNumber: results._winNumber,
   };
 };
 

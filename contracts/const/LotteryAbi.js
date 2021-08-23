@@ -183,6 +183,11 @@ module.exports = [
         name: "_stakingAmounts",
         type: "uint256[]",
       },
+      {
+        internalType: "uint256",
+        name: "_winNumber",
+        type: "uint256",
+      },
     ],
     stateMutability: "view",
     type: "function",
@@ -300,19 +305,6 @@ module.exports = [
         internalType: "address[]",
         name: "_match1",
         type: "address[]",
-      },
-    ],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [],
-    name: "getWinumber",
-    outputs: [
-      {
-        internalType: "uint256",
-        name: "_winNumber",
-        type: "uint256",
       },
     ],
     stateMutability: "view",
@@ -701,19 +693,6 @@ module.exports = [
         internalType: "address",
         name: "",
         type: "address",
-      },
-    ],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [],
-    name: "winNumber",
-    outputs: [
-      {
-        internalType: "uint256",
-        name: "",
-        type: "uint256",
       },
     ],
     stateMutability: "view",
