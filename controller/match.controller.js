@@ -7,6 +7,7 @@ const Const = require("../const");
 const { updatePool, getBets } = require("../services/pool.service");
 const { updateLottery } = require("../services/lottery.service");
 const { getTickets } = require("../contracts/lotteryContract");
+const syncLotteries = require("../tasks/syncLotteries");
 
 exports.getMatches = async (req, res) => {
   const currentTime = new Date().getTime() / 1000 + 60 * 60;
@@ -47,6 +48,7 @@ exports.getPools = async (req, res) => {
 };
 
 exports.getLotteries = async (req, res) => {
+  await syncLotteries();
   const lotteries = await LotteryModel.find({});
   res.json({ lotteries });
 };

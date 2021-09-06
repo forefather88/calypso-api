@@ -61,13 +61,12 @@ if (process.env.ENV === "PROD") {
   });
 
   //Every minute
-  cron.schedule("0 */1 * * * *", () => {
-    syncLotteries();
-  });
+  //cron.schedule("0 */1 * * * *", () => {
+  //  syncLotteries();
+  //});
 
   //Should be every 30 mins after testing
   cron.schedule("0 */30 * * * *", () => {
-    console.log("drawLotteries();");
     drawLotteries();
   });
 }
