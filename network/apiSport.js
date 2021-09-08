@@ -13,7 +13,7 @@ const apiSport = {
 exports.getMatches = (season, league) => {
   let gameType;
   switch (league) {
-    case 40:
+    case 39:
       gameType = "epl";
       break;
     case 140:
