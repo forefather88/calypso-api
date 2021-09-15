@@ -62,6 +62,7 @@ let Schema = new mongoose.Schema({
     winTotal: Number,
     refund: Number,
     poolFeeAmount: Number,
+    platformFeeAmount: Number,
     claimedDepositAndFee: Boolean,
     affiliates: [
       {

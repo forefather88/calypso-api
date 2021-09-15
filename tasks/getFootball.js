@@ -2,7 +2,7 @@ const MatchModel = require("../models/game.model");
 const { getMatches } = require("../network/apiSport");
 
 const getFootball = () => {
-  getMatchesByLeague(40);
+  getMatchesByLeague(39);
   getMatchesByLeague(140);
   getMatchesByLeague(78);
   getMatchesByLeague(135);

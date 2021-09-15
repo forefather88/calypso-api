@@ -45,7 +45,7 @@ if (process.env.ENV === "PROD") {
     fetchEsport();
   });
 
-  // Once a day
+  // Every 4 hours
   cron.schedule("0 0 */4 * * *", () => {
     getFootball();
   });

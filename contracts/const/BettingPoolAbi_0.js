@@ -2,67 +2,6 @@ module.exports = [
   {
     inputs: [
       {
-        internalType: "address",
-        name: "_owner",
-        type: "address",
-      },
-      {
-        internalType: "string",
-        name: "_title",
-        type: "string",
-      },
-      {
-        internalType: "string",
-        name: "_description",
-        type: "string",
-      },
-      {
-        internalType: "uint256",
-        name: "_gameId",
-        type: "uint256",
-      },
-      {
-        internalType: "string",
-        name: "_gameType",
-        type: "string",
-      },
-      {
-        internalType: "uint256",
-        name: "_endDate",
-        type: "uint256",
-      },
-      {
-        internalType: "address",
-        name: "_currency",
-        type: "address",
-      },
-      {
-        internalType: "uint256[]",
-        name: "_currencyDetails",
-        type: "uint256[]",
-      },
-      {
-        internalType: "address[]",
-        name: "_whitelist",
-        type: "address[]",
-      },
-      {
-        internalType: "bool[]",
-        name: "_bools",
-        type: "bool[]",
-      },
-      {
-        internalType: "int256[]",
-        name: "_handicap",
-        type: "int256[]",
-      },
-    ],
-    stateMutability: "nonpayable",
-    type: "constructor",
-  },
-  {
-    inputs: [
-      {
         internalType: "uint256",
         name: "_depositedCal",
         type: "uint256",
@@ -174,6 +113,149 @@ module.exports = [
   {
     inputs: [],
     name: "claimReward",
+    outputs: [
+      {
+        internalType: "bool",
+        name: "",
+        type: "bool",
+      },
+    ],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "_oldAddress",
+        type: "address",
+      },
+    ],
+    name: "removeWhitelistAddress",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "uint8",
+        name: "_sideWin",
+        type: "uint8",
+      },
+      {
+        internalType: "int256",
+        name: "_aResult",
+        type: "int256",
+      },
+      {
+        internalType: "int256",
+        name: "_bResult",
+        type: "int256",
+      },
+    ],
+    name: "setResult",
+    outputs: [
+      {
+        internalType: "bool",
+        name: "",
+        type: "bool",
+      },
+    ],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "testforwardAffiliateAward",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "testforwardPlatformFee",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "uint8",
+        name: "_sideWin",
+        type: "uint8",
+      },
+    ],
+    name: "testSetResult",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "_owner",
+        type: "address",
+      },
+      {
+        internalType: "string",
+        name: "_title",
+        type: "string",
+      },
+      {
+        internalType: "string",
+        name: "_description",
+        type: "string",
+      },
+      {
+        internalType: "uint256",
+        name: "_gameId",
+        type: "uint256",
+      },
+      {
+        internalType: "string",
+        name: "_gameType",
+        type: "string",
+      },
+      {
+        internalType: "uint256",
+        name: "_endDate",
+        type: "uint256",
+      },
+      {
+        internalType: "address",
+        name: "_currency",
+        type: "address",
+      },
+      {
+        internalType: "uint256[]",
+        name: "_currencyDetails",
+        type: "uint256[]",
+      },
+      {
+        internalType: "address[]",
+        name: "_whitelist",
+        type: "address[]",
+      },
+      {
+        internalType: "bool[]",
+        name: "_bools",
+        type: "bool[]",
+      },
+      {
+        internalType: "int256[]",
+        name: "_handicap",
+        type: "int256[]",
+      },
+    ],
+    stateMutability: "nonpayable",
+    type: "constructor",
+  },
+  {
+    inputs: [],
+    name: "withdrawDepositAndFee",
     outputs: [
       {
         internalType: "bool",
@@ -535,6 +617,19 @@ module.exports = [
   },
   {
     inputs: [],
+    name: "getPoolDetail3",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "_platformFeeAmount",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
     name: "getUserInfo",
     outputs: [
       {
@@ -745,19 +840,6 @@ module.exports = [
     type: "function",
   },
   {
-    inputs: [
-      {
-        internalType: "address",
-        name: "_oldAddress",
-        type: "address",
-      },
-    ],
-    name: "removeWhitelistAddress",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
     inputs: [],
     name: "result",
     outputs: [
@@ -768,35 +850,6 @@ module.exports = [
       },
     ],
     stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "uint8",
-        name: "_sideWin",
-        type: "uint8",
-      },
-      {
-        internalType: "int256",
-        name: "_aResult",
-        type: "int256",
-      },
-      {
-        internalType: "int256",
-        name: "_bResult",
-        type: "int256",
-      },
-    ],
-    name: "setResult",
-    outputs: [
-      {
-        internalType: "bool",
-        name: "",
-        type: "bool",
-      },
-    ],
-    stateMutability: "nonpayable",
     type: "function",
   },
   {
@@ -816,33 +869,6 @@ module.exports = [
       },
     ],
     stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "uint8",
-        name: "_sideWin",
-        type: "uint8",
-      },
-    ],
-    name: "testSetResult",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [],
-    name: "testforwardAffiliateAward",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [],
-    name: "testforwardPlatformFee",
-    outputs: [],
-    stateMutability: "nonpayable",
     type: "function",
   },
   {
@@ -914,19 +940,6 @@ module.exports = [
       },
     ],
     stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [],
-    name: "withdrawDepositAndFee",
-    outputs: [
-      {
-        internalType: "bool",
-        name: "",
-        type: "bool",
-      },
-    ],
-    stateMutability: "nonpayable",
     type: "function",
   },
 ];

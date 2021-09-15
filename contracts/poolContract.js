@@ -10,14 +10,16 @@ exports.getPool = async (poolAddress, userAddress, version = 0) => {
   const poolSc = getPoolContract(web3, poolAddress, version);
   const detail1 = poolSc.methods.getPoolDetail().call();
   const detail2 = poolSc.methods.getPoolDetail2().call();
+  const detail3 = poolSc.methods.getPoolDetail3().call();
   const info = poolSc.methods.getUserInfo().call({ from: userAddress });
   const bets = getBets(poolSc, userAddress);
-  const results = await Promise.all([detail1, detail2, info, bets]);
+  const results = await Promise.all([detail1, detail2, detail3, info, bets]);
   const details = {
     ...results[0],
     ...results[1],
     ...results[2],
-    bets: results[3],
+    ...results[3],
+    bets: results[4],
   };
   return {
     _id: poolAddress,
@@ -41,6 +43,7 @@ exports.getPool = async (poolAddress, userAddress, version = 0) => {
       winTotal: (details._winTotal || 0) / 1e18,
       refund: details._refund / 1e18,
       poolFeeAmount: details._poolFeeAmount / 1e18,
+      platformFeeAmount: results[2] / 1e18,
       claimedDepositAndFee: details._claimedDepositAndFee,
     },
     betUsers: details._betUsers,

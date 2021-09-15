@@ -25,6 +25,7 @@ exports.updatePool = async (poolAddress, userAddress) => {
     winTotal: result.winTotal,
     refund: result.refund,
     poolFeeAmount: result.poolFeeAmount,
+    platformFeeAmount: result.platformFeeAmount,
     claimedDepositAndFee: result.claimedDepositAndFee,
     updated: result.side != 0 ? true : null,
   };

@@ -2,6 +2,32 @@ module.exports = [
   {
     inputs: [
       {
+        internalType: "address",
+        name: "_address",
+        type: "address",
+      },
+    ],
+    name: "changeLinkAddress",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "_address",
+        type: "address",
+      },
+    ],
+    name: "changeOracleAddress",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
         internalType: "uint256",
         name: "_totalPrize",
         type: "uint256",
@@ -97,6 +123,19 @@ module.exports = [
   },
   {
     inputs: [],
+    name: "oracleAddress",
+    outputs: [
+      {
+        internalType: "address",
+        name: "",
+        type: "address",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
     name: "owner",
     outputs: [
       {
@@ -123,6 +162,19 @@ module.exports = [
     ],
     name: "rawFulfillRandomness",
     outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "withdrawCal",
+    outputs: [
+      {
+        internalType: "bool",
+        name: "",
+        type: "bool",
+      },
+    ],
     stateMutability: "nonpayable",
     type: "function",
   },
