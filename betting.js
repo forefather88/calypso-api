@@ -56,7 +56,8 @@ if (process.env.ENV === "PROD") {
   });
 
   //Every 2 hours
-  cron.schedule("0 0 */2 * * *", () => {
+  cron.schedule("0 */1 * * * *", () => {
+    console.log("AAAAAAAAAAAAAAAA");
     syncPools();
   });
 
