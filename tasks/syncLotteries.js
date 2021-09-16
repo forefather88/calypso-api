@@ -6,7 +6,9 @@ module.exports = async () => {
   const savedLotteries = await LotteryModel.find({});
   const savedLotteryIds = savedLotteries.map((el) => el._id);
   const notSavedAddrs = allAddrs.filter((el) => !savedLotteryIds.includes(el));
-  notSavedAddrs.forEach(syncLottery);
+  for (const el of notSavedAddrs) {
+    await syncLottery(el);
+  }
 };
 
 const syncLottery = async (addr) => {
