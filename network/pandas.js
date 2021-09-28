@@ -8,7 +8,7 @@ const pandas = {
   headers: {
     Authorization: "Bearer " + process.env.PANDAS_TOKEN,
   },
-  getFixturesUrl: host + "matches/upcoming",
+  getFixturesUrl: host + "matches/upcoming?page=1&per_page=100",
   getMatch: host + "matches/",
 };
 
