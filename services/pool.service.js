@@ -37,8 +37,9 @@ exports.updatePool = async (poolAddress, userAddress) => {
   const bets = mergeBets([...pool.bets], poolDetail.bets);
   //Since we can't store txId in the blockchain, I've made additional BetTxIdModel to store it after we place a bet.
   //updatePool takes the txId from BetTxIdModel and puts it in the bet with the same _id inside of the current Pool.
+
   for (const bet of bets) {
-    if (bet.txId != undefined) {
+    if (bet.txId == undefined) {
       var betModel = await BetTxIdModel.findOne({ _id: bet._id });
       if (betModel != null) {
         bet.txId = betModel.txId;
