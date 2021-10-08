@@ -62,13 +62,13 @@ if (process.env.ENV === "PROD") {
 
   //Every minute
   //cron.schedule("0 */1 * * * *", () => {
-  //  syncLotteries();
+  // syncLotteries();
   //});
 
   //Should be every 30 mins after testing
-  cron.schedule("0 */30 * * * *", () => {
-    drawLotteries();
-  });
+  //cron.schedule("0 */30 * * * *", () => {
+  // drawLotteries();
+  //});
 }
 
 app.use("/api", apiRouter);

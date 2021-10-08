@@ -40,6 +40,7 @@ const drawLottery = async (addr) => {
         data: txData,
         chainId: Number(process.env.CHAIN_ID),
       };
+
       var tx = new Tx.Transaction(rawTx, { chain: process.env.CHAIN });
       tx.sign(privateKeyHex);
       var serializedTx = tx.serialize();

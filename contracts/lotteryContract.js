@@ -55,10 +55,16 @@ exports.getAllLotteries = () => {
   });
 };
 
-exports.getTickets = async (lotteryAddress, userAddress) => {
+exports.getTickets = (lotteryAddress, userAddress) => {
   const lotterySc = getLotteryContract(web3, lotteryAddress);
-  const _tickets = await lotterySc.methods
-    .getTicketsOfPlayer()
-    .call({ from: userAddress });
-  return { tickets: _tickets };
+
+  return new Promise((resolve, reject) => {
+    lotterySc.methods
+      .getTicketsOfPlayer()
+      .call({ from: userAddress })
+      .then((res) => {
+        resolve(res);
+      })
+      .catch((err) => reject(err));
+  });
 };

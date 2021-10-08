@@ -5,7 +5,6 @@ const BetTxIdModel = require("../models/bettxid.model");
 const UserNameModel = require("../models/userName.model");
 const Const = require("../const");
 const { updatePool, getBets } = require("../services/pool.service");
-const { updateLottery } = require("../services/lottery.service");
 const { getTickets } = require("../contracts/lotteryContract");
 const syncLotteries = require("../tasks/syncLotteries");
 
@@ -60,9 +59,22 @@ exports.getBets = async (req, res) => {
 };
 
 exports.getTickets = async (req, res) => {
-  const { lotteryAddress, userAddress } = req.query;
+  const { lotteryAddress, userAddress, lotteryType } = req.query;
   const tickets = await getTickets(lotteryAddress, userAddress);
-  res.json({ tickets });
+  //console.log(tickets);
+  switch (lotteryType) {
+    case "currentLottery":
+      res.json({ currentLottery: tickets });
+      break;
+    case "previousLottery":
+      res.json({ previousLottery: tickets });
+      break;
+    case "specificLottery":
+      res.json({ specificLottery: tickets });
+      break;
+    default:
+      break;
+  }
 };
 
 exports.createPool = (req, res) => {
@@ -122,13 +134,6 @@ exports.getPool = async (req, res) => {
         message: "Not found",
       });
     });
-};
-
-exports.getLottery = async (req, res) => {
-  const { lotteryAddress } = req.query;
-  await updateLottery(lotteryAddress);
-  const lottery = await LotteryModel.findOne({ _id: lotteryAddress });
-  res.json({ lottery });
 };
 
 exports.createUserName = async (req, res) => {
