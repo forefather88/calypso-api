@@ -98,6 +98,38 @@ module.exports = [
     type: "function",
   },
   {
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    name: "firstPrize",
+    outputs: [
+      {
+        internalType: "address",
+        name: "",
+        type: "address",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "firstPrizeTotal",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
     inputs: [],
     name: "getLotteryDetail",
     outputs: [
@@ -138,22 +170,12 @@ module.exports = [
       },
       {
         internalType: "uint256",
-        name: "_originalTotalStaked",
-        type: "uint256",
-      },
-      {
-        internalType: "uint256",
         name: "_playersAmount",
         type: "uint256",
       },
       {
         internalType: "uint256",
         name: "_totalPrize",
-        type: "uint256",
-      },
-      {
-        internalType: "uint256",
-        name: "_totalStaked",
         type: "uint256",
       },
     ],
@@ -170,46 +192,12 @@ module.exports = [
         type: "address[]",
       },
       {
-        internalType: "address[]",
-        name: "_usersClaimedStake",
-        type: "address[]",
-      },
-      {
-        internalType: "address[]",
-        name: "_stakersAddresses",
-        type: "address[]",
-      },
-      {
-        internalType: "uint256[]",
-        name: "_stakingAmounts",
-        type: "uint256[]",
-      },
-      {
         internalType: "uint256",
         name: "_winNumber",
         type: "uint256",
       },
     ],
     stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "uint256",
-        name: "_ticketNumber",
-        type: "uint256",
-      },
-    ],
-    name: "getTicket",
-    outputs: [
-      {
-        internalType: "bool",
-        name: "",
-        type: "bool",
-      },
-    ],
-    stateMutability: "nonpayable",
     type: "function",
   },
   {
@@ -244,25 +232,6 @@ module.exports = [
         internalType: "uint256[]",
         name: "_tickets",
         type: "uint256[]",
-      },
-    ],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
-        name: "_addr",
-        type: "address",
-      },
-    ],
-    name: "getUsersStake",
-    outputs: [
-      {
-        internalType: "uint256",
-        name: "",
-        type: "uint256",
       },
     ],
     stateMutability: "view",
@@ -338,8 +307,14 @@ module.exports = [
     type: "function",
   },
   {
-    inputs: [],
-    name: "oracleAddress",
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    name: "match1",
     outputs: [
       {
         internalType: "address",
@@ -352,12 +327,121 @@ module.exports = [
   },
   {
     inputs: [],
-    name: "originalTotalStaked",
+    name: "match1Total",
     outputs: [
       {
         internalType: "uint256",
         name: "",
         type: "uint256",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    name: "match2",
+    outputs: [
+      {
+        internalType: "address",
+        name: "",
+        type: "address",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "match2Total",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    name: "match3",
+    outputs: [
+      {
+        internalType: "address",
+        name: "",
+        type: "address",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "match3Total",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    name: "match4",
+    outputs: [
+      {
+        internalType: "address",
+        name: "",
+        type: "address",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "match4Total",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "oracleAddress",
+    outputs: [
+      {
+        internalType: "address",
+        name: "",
+        type: "address",
       },
     ],
     stateMutability: "view",
@@ -398,50 +482,12 @@ module.exports = [
   {
     inputs: [
       {
-        internalType: "address",
-        name: "",
-        type: "address",
-      },
-    ],
-    name: "stAddrsToIndex",
-    outputs: [
-      {
         internalType: "uint256",
         name: "",
         type: "uint256",
       },
     ],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "uint256",
-        name: "_amount",
-        type: "uint256",
-      },
-    ],
-    name: "stake",
-    outputs: [
-      {
-        internalType: "bool",
-        name: "",
-        type: "bool",
-      },
-    ],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "uint256",
-        name: "",
-        type: "uint256",
-      },
-    ],
-    name: "stakersAddresses",
+    name: "secondPrize",
     outputs: [
       {
         internalType: "address",
@@ -453,14 +499,8 @@ module.exports = [
     type: "function",
   },
   {
-    inputs: [
-      {
-        internalType: "uint256",
-        name: "",
-        type: "uint256",
-      },
-    ],
-    name: "stakingAmounts",
+    inputs: [],
+    name: "secondPrizeTotal",
     outputs: [
       {
         internalType: "uint256",
@@ -485,8 +525,27 @@ module.exports = [
     type: "function",
   },
   {
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    name: "thirdPrize",
+    outputs: [
+      {
+        internalType: "address",
+        name: "",
+        type: "address",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
     inputs: [],
-    name: "totalPrize",
+    name: "thirdPrizeTotal",
     outputs: [
       {
         internalType: "uint256",
@@ -499,7 +558,7 @@ module.exports = [
   },
   {
     inputs: [],
-    name: "totalStaked",
+    name: "totalPrize",
     outputs: [
       {
         internalType: "uint256",
@@ -521,19 +580,6 @@ module.exports = [
       },
     ],
     stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [],
-    name: "unstake",
-    outputs: [
-      {
-        internalType: "bool",
-        name: "",
-        type: "bool",
-      },
-    ],
-    stateMutability: "nonpayable",
     type: "function",
   },
   {
@@ -569,25 +615,6 @@ module.exports = [
       },
     ],
     name: "usersClaimedPrize",
-    outputs: [
-      {
-        internalType: "address",
-        name: "",
-        type: "address",
-      },
-    ],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "uint256",
-        name: "",
-        type: "uint256",
-      },
-    ],
-    name: "usersClaimedStake",
     outputs: [
       {
         internalType: "address",

@@ -22,6 +22,6 @@ let Schema = new mongoose.Schema({
   usersClaimedStake: [String],
   stakersAddresses: [String],
   stakingAmounts: [Number],
-  winNumber: [Number],
+  winNumber: Number,
 });
 module.exports = mongoose.model("lottery", Schema);
