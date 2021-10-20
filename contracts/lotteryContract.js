@@ -24,11 +24,10 @@ exports.getLottery = async (lotteryAddress) => {
     endDate: results._endDate,
     lotteryManagerAddress: results._lotteryManagerAddress,
     totalTickets: results._totalTickets,
-    originalTotalStaked: results._originalTotalStaked, // / 1e18,
     totalPrize: results._totalPrize,
     playersAmount: results._playersAmount,
     usersClaimedPrize: results._usersClaimedPrize,
-    totalStaked: results._totalStaked,
+    poolSize: results._poolSize,
     firstPrize: results._firstPrize,
     secondPrize: results._secondPrize,
     thirdPrize: results._thirdPrize,
@@ -36,9 +35,6 @@ exports.getLottery = async (lotteryAddress) => {
     match3: results._match3,
     match2: results._match2,
     match1: results._match1,
-    usersClaimedStake: results._usersClaimedStake,
-    stakersAddresses: results._stakersAddresses,
-    stakingAmounts: results._stakingAmounts,
     winNumber: results._winNumber,
   };
 };

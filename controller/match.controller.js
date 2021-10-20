@@ -61,7 +61,6 @@ exports.getBets = async (req, res) => {
 exports.getTickets = async (req, res) => {
   const { lotteryAddress, userAddress, lotteryType } = req.query;
   const tickets = await getTickets(lotteryAddress, userAddress);
-  //console.log(tickets);
   switch (lotteryType) {
     case "currentLottery":
       res.json({ currentLottery: tickets });

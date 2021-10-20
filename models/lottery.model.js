@@ -7,10 +7,9 @@ let Schema = new mongoose.Schema({
   endDate: Number,
   lotteryManagerAddress: String,
   totalTickets: Number,
-  originalTotalStaked: Number,
+  poolSize: Number,
   playersAmount: Number,
   totalPrize: Number,
-  totalStaked: Number,
   firstPrize: [String],
   secondPrize: [String],
   thirdPrize: [String],
@@ -19,9 +18,6 @@ let Schema = new mongoose.Schema({
   match2: [String],
   match1: [String],
   usersClaimedPrize: [String],
-  usersClaimedStake: [String],
-  stakersAddresses: [String],
-  stakingAmounts: [Number],
   winNumber: Number,
 });
 module.exports = mongoose.model("lottery", Schema);
