@@ -27,7 +27,7 @@ module.exports = async () => {
       await updateToContract(pool);
       console.log("Done ", pool._id);
     } catch (err) {
-      console.log(err);
+      console.log("update pools error: ", err);
     }
   }
 };
@@ -36,7 +36,6 @@ exports.updatePoolResult = async (pool) => {
   const { game, result } = pool;
   const res = await getGameResult(game);
   if (!res) return;
-  console.log(res);
   pool.result = { ...result, ...res };
   await pool.save();
 };

@@ -85,7 +85,11 @@ exports.updateResult = (poolAddress, result, g1, g2, version = 0) => {
     web3.eth.getTransactionCount(pub).then((nonce) => {
       var privateKeyHex = Buffer.from(priv, "hex");
       var poolSc = getPoolContract(web3, poolAddress, version);
-      var txData = poolSc.methods.setResult(result, g1, g2).encodeABI();
+      try {
+        var txData = poolSc.methods.setResult(result, g1, g2).encodeABI();
+      } catch (err) {
+        console.log("error update smart contract result: ", err);
+      }
       var rawTx = {
         from: pub,
         to: poolAddress,
@@ -106,6 +110,7 @@ exports.updateResult = (poolAddress, result, g1, g2, version = 0) => {
         })
         .on("error", (err) => {
           console.log(`--------- ERROR ----- ${pub}`);
+          console.log("upload smart contract error:", err);
           reject(String(err));
         })
         .once("confirmation", (confNumber, receipt) => {
