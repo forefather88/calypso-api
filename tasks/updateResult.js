@@ -2,6 +2,7 @@ require("dotenv").config();
 const { SportType } = require("../const");
 const PoolModel = require("../models/pool.model");
 const apiSport = require("../network/apiSport");
+const apiNba = require("../network/apiNba");
 const pandas = require("../network/pandas");
 const poolContract = require("../contracts/poolContract");
 
@@ -58,7 +59,7 @@ const getGameResult = (game) => {
         })
         .catch((err) => reject(err));
     } else if (game.type === SportType.nba) {
-      pandas
+      apiNba
         .getResult(game.gameId)
         .then((res) => {
           resolve(res);
